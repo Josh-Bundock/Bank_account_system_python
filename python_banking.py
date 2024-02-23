@@ -31,10 +31,12 @@ class Account:
     def account_deposit(self):
         while True:
             deposit_amount = float(input('How much would you like to deposit: £'))
-            print('Enter password to confirm transaction')
+            print('Enter password to confirm transaction or [c] to change amount.')
             confirm_deposit = input('Enter here: ')
             if confirm_deposit == self.password:
                 break
+            elif confirm_deposit == 'c':
+                continue 
             else:
                 print('Invalid input, try again.')
                 continue
@@ -51,11 +53,11 @@ class Account:
                 print(f'Unable to make transaction as you have £{self.balance} in your' 
                 f' account and are trying to withdraw £{withdraw_amount}')
                 continue
-            print('Would you like to confirm this transaction?\n1) Yes\n2) No')
+            print('Enter password to confirm transaction or [c] to change amount being withdrawn.')
             confirm_withdraw = input('Enter here: ')
-            if confirm_withdraw == '1':
+            if confirm_withdraw == self.password:
                 break
-            elif confirm_withdraw == '2':
+            elif confirm_withdraw == 'c':
                 continue
             else:
                 print('Invalid input, try again.')
